@@ -1,5 +1,6 @@
 import 'package:calculator_app/add.dart';
 import 'package:calculator_app/div.dart';
+import 'package:calculator_app/menu.dart';
 import 'package:calculator_app/mul.dart';
 import 'package:calculator_app/sub.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,11 @@ class App extends StatelessWidget {
         appBar: AppBar(
           title: Text("CALCULATOR APP"),
         ),
-        body:  Div(),
+        body:Menu(),
 
       ),
 
     );
-
-
 
   }
 }
