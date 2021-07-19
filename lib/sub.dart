@@ -2,10 +2,15 @@ import 'package:calculator_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Sub extends StatelessWidget {
+class Sub extends StatefulWidget {
+  @override
+  _SubState createState() => _SubState();
+}
+
+class _SubState extends State<Sub> {
   TextEditingController num1=TextEditingController();
   TextEditingController num2=TextEditingController();
-
+  int _sub=0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,10 +60,12 @@ class Sub extends StatelessWidget {
                       onPressed: (){
                         var getNumber1=int.parse(num1.text);
                         var getNumber2=int.parse(num2.text);
-                        var getResult=getNumber1-getNumber2;
                         print(getNumber1);
                         print(getNumber2);
-                        print(getResult);
+                        setState(() {
+                          _sub=getNumber1-getNumber2;
+                        });
+                        print(_sub);
 
                       },
                       child: Text("SUB",
@@ -69,6 +76,13 @@ class Sub extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Text(_sub.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
+
+                  ),
                   SizedBox(height: 20,),
                   SizedBox(
                     height: 60,
@@ -78,14 +92,14 @@ class Sub extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>App()));
 
-                    },
+                      },
                       child: Text("BACK TO LOGIN",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                         ),
+                      ),
                     ),
-                  ),
                   ),
                 ],//children
               ),
@@ -97,6 +111,6 @@ class Sub extends StatelessWidget {
     );
 
 
-
   }
 }
+

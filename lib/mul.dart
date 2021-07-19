@@ -1,10 +1,16 @@
 import 'package:calculator_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-class Mul extends StatelessWidget {
-TextEditingController num1=TextEditingController();
-TextEditingController num2=TextEditingController();
+class Mul extends StatefulWidget {
 
+  @override
+  _MulState createState() => _MulState();
+}
+
+class _MulState extends State<Mul> {
+  TextEditingController num1=TextEditingController();
+  TextEditingController num2=TextEditingController();
+  int _mul=0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,10 +61,12 @@ TextEditingController num2=TextEditingController();
                       onPressed: (){
                         var getNumber1=int.parse(num1.text);
                         var getNumber2=int.parse(num2.text);
-                        var getResult=getNumber1*getNumber2;
                         print(getNumber1);
                         print(getNumber2);
-                        print(getResult);
+                        setState(() {
+                          _mul=getNumber1*getNumber2;
+                        });
+                        print(_mul);
 
                       },
                       child: Text("MUL",
@@ -70,6 +78,13 @@ TextEditingController num2=TextEditingController();
                       ),
                     ),
                   ),
+                  Text(_mul.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
+
+                  ),
                   SizedBox(height: 20,),
                   SizedBox(
                     height: 60,
@@ -77,17 +92,17 @@ TextEditingController num2=TextEditingController();
                     child: RaisedButton(
                       color: Colors.deepOrange,
                       onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>App()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>App()));
 
-                    },
+                      },
                       child: Text("BACK TO LOGIN",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                         ),
 
+                      ),
                     ),
-                  ),
                   ),
                 ],//children
               ),
@@ -97,8 +112,6 @@ TextEditingController num2=TextEditingController();
       ),
 
     );
-
-
-
   }
 }
+

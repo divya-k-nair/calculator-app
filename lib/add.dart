@@ -3,10 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Add extends StatelessWidget {
- TextEditingController num1=TextEditingController() ;
- TextEditingController num2=TextEditingController();
+class Add extends StatefulWidget {
+  @override
+  _AddState createState() => _AddState();
+}
 
+class _AddState extends State<Add> {
+  TextEditingController num1=TextEditingController();
+  TextEditingController num2=TextEditingController();
+  int _sum=0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,10 +64,13 @@ class Add extends StatelessWidget {
                       onPressed: (){
                         var getNumber1=int.parse(num1.text);
                         var getNumber2=int.parse(num2.text);
-                        var getResult= getNumber1+ getNumber2;
                         print(getNumber1);
                         print(getNumber2);
-                        print(getResult);
+                        setState(() {
+                          _sum= getNumber1+ getNumber2;
+                        });
+
+                        print(_sum);
 
                       },
                       child: Text("ADD",
@@ -70,8 +78,14 @@ class Add extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 25,
                         ),
+                      ),
                     ),
                   ),
+                  Text(_sum.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
                   ),
                   SizedBox(height: 20,),
                   SizedBox(
@@ -82,14 +96,14 @@ class Add extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>App()));
 
-                    },
+                      },
                       child: Text("BACK TO HOME",
                         style: TextStyle(
                           color: Colors.black87,
                           fontSize: 25,
                         ),
-                    ) ,
-                  ),
+                      ) ,
+                    ),
                   ),
                 ],//children
               ),
@@ -99,7 +113,5 @@ class Add extends StatelessWidget {
       ),
 
     );
-
-
   }
 }

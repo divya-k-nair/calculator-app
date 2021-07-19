@@ -1,10 +1,16 @@
 import 'package:calculator_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-class Div extends StatelessWidget {
+class Div extends StatefulWidget {
+
+  @override
+  _DivState createState() => _DivState();
+}
+
+class _DivState extends State<Div> {
   TextEditingController num1=TextEditingController();
   TextEditingController num2=TextEditingController();
-
+  double _div=0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,10 +60,12 @@ class Div extends StatelessWidget {
                       onPressed: (){
                         var getNumber1=int.parse(num1.text);
                         var getNumber2=int.parse(num2.text);
-                        var getResult=getNumber1/getNumber2;
                         print(getNumber1);
                         print(getNumber2);
-                        print(getResult);
+                        setState(() {
+                          _div=getNumber1/getNumber2;
+                        });
+                        print(_div);
 
                       },
                       child: Text("DIV",
@@ -68,6 +76,13 @@ class Div extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Text(_div.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
+
+                  ),
                   SizedBox(height: 20,),
                   SizedBox(
                     height: 60,
@@ -75,17 +90,17 @@ class Div extends StatelessWidget {
                     child: RaisedButton(
                       color: Colors.redAccent,
                       onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>App()));
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=>App()));
 
-                    },
-                     child: Text("BACK TO LOGIN",
-                       style: TextStyle(
-                         color: Colors.black87,
-                         fontSize: 25,
-                       ),
+                      },
+                      child: Text("BACK TO LOGIN",
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 25,
+                        ),
 
+                      ),
                     ),
-                  ),
                   ),
                 ],//children
               ),
@@ -98,3 +113,4 @@ class Div extends StatelessWidget {
 
   }
 }
+
