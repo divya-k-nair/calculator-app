@@ -1,5 +1,6 @@
 import 'package:calculator_app/add.dart';
 import 'package:calculator_app/div.dart';
+import 'package:calculator_app/entry.dart';
 import 'package:calculator_app/menu.dart';
 import 'package:calculator_app/mul.dart';
 import 'package:calculator_app/sub.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/widgets.dart';
 
 void main()
 {
-  runApp(App());
+  runApp(Entry());
 }
 class App extends StatelessWidget {
 
